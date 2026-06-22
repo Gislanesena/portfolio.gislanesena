@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gislane Sena — sena.dev</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- TICKER -->
+    <div class="race-bar" aria-hidden="true">
+        <span class="race-bar__text">🏎️ &nbsp; GISLANE SENA &nbsp; · &nbsp; VELOCIDADE: MÁXIMA &nbsp; · &nbsp; STATUS: ONLINE &nbsp; · &nbsp; STACK: C# · .NET · PYTHON &nbsp; · &nbsp; 🏁 &nbsp; GISLANE SENA &nbsp; · &nbsp; VELOCIDADE: MÁXIMA &nbsp; · &nbsp; STATUS: ONLINE &nbsp; · &nbsp; STACK: C# · .NET · PYTHON &nbsp; · &nbsp;</span>
+    </div>
+
+    <!-- STICKY NAV -->
+    <header class="site-header">
+        <nav>
+            <div class="nav__brand">
+                <span class="nav__logo">sena.dev</span>
+                <span class="nav__tagline">Código com foco em performance</span>
+            </div>
+            <div class="nav__links">
+                <a href="#about">Sobre</a>
+                <a href="#projects">Projetos</a>
+                <a href="#skills">Skills</a>
+                <a href="#highlights">Destaques</a>
+                <a href="#contact">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Apresentação">
+        <div class="hero__bg-num" aria-hidden="true">01</div>
+        <div class="hero__content">
+            <p class="hero__eyebrow">🏁 Bem-vindo(a) ao box</p>
+            <h1 class="hero__title"><em>Sena</em></h1>
+            <p class="hero__sub">Desenvolvedora Full Stack &nbsp;·&nbsp; Piloto de Código</p>
+            <div class="hero__ctas">
+                <a href="#projects" class="btn btn--primary">Ver Projetos →</a>
+                <a href="#contact" class="btn btn--ghost">Entrar em Contato</a>
+            </div>
+        </div>
+        <div class="hero__stripe" aria-hidden="true"></div>
+    </section>
+
+    <!-- TELEMETRY BAR -->
+    <div class="telemetry" aria-label="Telemetria técnica">
+        <div class="telemetry__item"><span class="telemetry__label">STACK</span><span class="telemetry__value">C# · .NET · Python</span></div>
+        <div class="telemetry__sep" aria-hidden="true">|</div>
+        <div class="telemetry__item"><span class="telemetry__label">DB</span><span class="telemetry__value">PostgreSQL · SQL Server</span></div>
+        <div class="telemetry__sep" aria-hidden="true">|</div>
+        <div class="telemetry__item"><span class="telemetry__label">INFRA</span><span class="telemetry__value">Docker</span></div>
+        <div class="telemetry__sep" aria-hidden="true">|</div>
+        <div class="telemetry__item"><span class="telemetry__label">MODO</span><span class="telemetry__value status-dot">Disponível</span></div>
+    </div>
+
+    <!-- SOBRE -->
+    <section id="about" class="section">
+        <div class="section-header">
+            <span class="section-number" aria-hidden="true">01</span>
+            <h2>Sobre Mim</h2>
+        </div>
+        <div class="about__content">
+            <p>Sou desenvolvedora apaixonada por tecnologia, aprendizado contínuo e criação de soluções eficientes. Minha trajetória é construída através de projetos práticos, onde busco unir lógica, criatividade e qualidade no desenvolvimento.</p>
+            <p>Tenho experiência com desenvolvimento web, programação, bancos de dados e ferramentas de apoio ao desenvolvimento, sempre buscando evoluir minhas habilidades e explorar novos desafios.</p>
+            <p>Acredito que tecnologia é uma jornada de evolução constante: cada projeto é uma oportunidade de aprender, melhorar e construir algo com propósito.</p>
+        </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projects" class="section">
+        <div class="section-header">
+            <span class="section-number" aria-hidden="true">02</span>
+            <h2>Projetos</h2>
+        </div>
+        <div class="projects-grid">
+
+            <div class="card">
+                <div class="card__img-wrap">
+                    <img src="link_da_imagem" alt="BuildXP dev" loading="lazy">
+                    <div class="card__badge">P1</div>
+                </div>
+                <div class="card__body">
+                    <h3>BuildXP dev</h3>
+                    <p>Plataforma para tornar o aprendizado em tecnologia mais acessível e interativo. Ensina ferramentas e conceitos na prática, com terminal de treino e sistema de XP.</p>
+                    <a href="https://www.buildxpdev.com.br/" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver Projeto →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card__img-wrap">
+                    <img src="link_da_imagem" alt="AxiomCode" loading="lazy">
+                    <div class="card__badge">P2</div>
+                </div>
+                <div class="card__body">
+                    <h3>AxiomCode</h3>
+                    <p>Ambiente acolhedor para calouros de tecnologia, com foco em inspirar e apoiar ao longo do curso — reduzindo o trancamento nos cursos de T.I.</p>
+                    <a href="https://github.com/Gislanesena/Projeto_Axiom" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver no GitHub →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card__img-wrap">
+                    <img src="link_da_imagem" alt="Sistema para Clínicas Populares" loading="lazy">
+                    <div class="card__badge">P3</div>
+                </div>
+                <div class="card__body">
+                    <h3>Clínicas Populares</h3>
+                    <p>API REST para clínicas populares (SUS): prontuário eletrônico, agendamento, fila inteligente e Machine Learning para prever tempo de espera e risco de falta.</p>
+                    <a href="https://github.com/Gislanesena/clinica-popular" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver no GitHub →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card__img-wrap">
+                    <img src="link_da_imagem" alt="Sistema de Gestão Ambiental" loading="lazy">
+                    <div class="card__badge">P4</div>
+                </div>
+                <div class="card__body">
+                    <h3>Gestão Ambiental</h3>
+                    <p>Sistema em C para gestão ambiental de startups: cadastro de indústrias, relatórios, documento fiscal e gerenciamento com PDCA, Scrum, PERT, Gantt e Kanban.</p>
+                    <a href="https://github.com/Gislanesena/Gerenciamento_Startup" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver no GitHub →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+        <div class="section-header">
+            <span class="section-number" aria-hidden="true">03</span>
+            <h2>Habilidades</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-chip"><span class="skill-chip__icon" aria-hidden="true">⚡</span>C#</div>
+            <div class="skill-chip"><span class="skill-chip__icon" aria-hidden="true">⚡</span>.NET</div>
+            <div class="skill-chip"><span class="skill-chip__icon" aria-hidden="true">⚡</span>Python</div>
+            <div class="skill-chip"><span class="skill-chip__icon" aria-hidden="true">🗄️</span>PostgreSQL</div>
+            <div class="skill-chip"><span class="skill-chip__icon" aria-hidden="true">🗄️</span>SQL Server</div>
+            <div class="skill-chip"><span class="skill-chip__icon" aria-hidden="true">🐳</span>Docker</div>
+            <div class="skill-chip"><span class="skill-chip__icon" aria-hidden="true">🛠️</span>DBeaver</div>
+        </div>
+    </section>
+
+    <!-- DESTAQUES -->
+    <section id="highlights" class="section">
+        <div class="section-header">
+            <span class="section-number" aria-hidden="true">04</span>
+            <h2>Destaques</h2>
+        </div>
+        <div class="highlights-list">
+
+            <div class="highlight-item">
+                <div class="highlight-item__img-wrap">
+                    <img src="link_da_imagem" alt="Construindo na prática" loading="lazy">
+                    <div class="highlight-item__badge" aria-hidden="true">🔧</div>
+                </div>
+                <div class="highlight-item__body">
+                    <span class="highlight-item__tag">Prática</span>
+                    <h3>Construindo na prática</h3>
+                    <p>Desenvolvimento de projetos próprios e colaborativos, transformando ideias em aplicações reais e evoluindo constantemente minhas habilidades técnicas.</p>
+                </div>
+            </div>
+
+            <div class="highlight-item">
+                <div class="highlight-item__img-wrap">
+                    <img src="link_da_imagem" alt="Projetos com propósito" loading="lazy">
+                    <div class="highlight-item__badge" aria-hidden="true">🎯</div>
+                </div>
+                <div class="highlight-item__body">
+                    <span class="highlight-item__tag">Impacto</span>
+                    <h3>Projetos com propósito</h3>
+                    <p>Participação em iniciativas que unem tecnologia, comunidade e aprendizado, buscando criar soluções acessíveis e que gerem impacto.</p>
+                </div>
+            </div>
+
+            <div class="highlight-item">
+                <div class="highlight-item__img-wrap">
+                    <img src="link_da_imagem" alt="Experiência em desenvolvimento" loading="lazy">
+                    <div class="highlight-item__badge" aria-hidden="true">💻</div>
+                </div>
+                <div class="highlight-item__body">
+                    <span class="highlight-item__tag">Experiência</span>
+                    <h3>Experiência em desenvolvimento</h3>
+                    <p>Atuação com desenvolvimento web, regras de negócio, manutenção de sistemas e criação de soluções utilizando diferentes tecnologias.</p>
+                </div>
+            </div>
+
+            <div class="highlight-item">
+                <div class="highlight-item__img-wrap">
+                    <img src="link_da_imagem" alt="Minha pista até aqui" loading="lazy">
+                    <div class="highlight-item__badge" aria-hidden="true">🏁</div>
+                </div>
+                <div class="highlight-item__body">
+                    <span class="highlight-item__tag">Evolução</span>
+                    <h3>Minha pista até aqui</h3>
+                    <p>Cada projeto representa uma nova etapa da minha evolução: novos desafios, novas tecnologias e novas oportunidades de melhorar.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <footer id="contact">
+        <div class="footer__stripe" aria-hidden="true"></div>
+        <div class="footer__inner">
+            <div class="section-header" style="justify-content:center;">
+                <span class="section-number" aria-hidden="true">05</span>
+                <h2>Contato</h2>
+            </div>
+            <p class="footer__tagline">Pronta para o próximo GP. Vamos pilotar juntos?</p>
+            <a href="mailto:gislane.sena@icloud.com" class="footer__email">gislane.sena@icloud.com</a>
+            <div class="social-icons">
+                <a href="https://github.com/GislaneSena" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://linkedin.com/in/GislaneSena" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+            <p class="footer__copy">© 2025 Gislane Sena · Feito na pole position 🏆</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
