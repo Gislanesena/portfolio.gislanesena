@@ -1,85 +1,74 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('nav a');
+/* =========================================================
+   sena.dev — enhancements
+   ========================================================= */
 
-    // Smooth scroll
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const id = link.getAttribute('href').substring(1);
-            const target = document.getElementById(id);
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    });
+// Tachometer scroll progress
+const tachFill = document.getElementById('tachFill');
+function updateTach(){
+  const h = document.documentElement;
+  const scrolled = h.scrollTop;
+  const total = h.scrollHeight - h.clientHeight;
+  const pct = total > 0 ? (scrolled / total) * 100 : 0;
+  if (tachFill) tachFill.style.width = pct + '%';
+}
+window.addEventListener('scroll', updateTach, { passive: true });
+updateTach();
 
-    // Active nav highlight on scroll
-    const sections = document.querySelectorAll('section[id], footer[id]');
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                navLinks.forEach(link => {
-                    const isActive = link.getAttribute('href') === `#${entry.target.id}`;
-                    link.classList.toggle('active', isActive);
-                });
-            }
-        });
-    }, { threshold: 0.35 });
-    sections.forEach(s => io.observe(s));
+// Skip start-lights on subsequent visits within session
+if (sessionStorage.getItem('lightsShown') === '1') {
+  document.body.classList.add('no-lights');
+} else {
+  sessionStorage.setItem('lightsShown', '1');
+  // Remove overlay from DOM after animation to avoid blocking
+  setTimeout(() => {
+    const el = document.getElementById('startLights');
+    if (el) el.remove();
+  }, 5400);
+}
 
-    // Staggered entrance: skill chips
-    const chips = document.querySelectorAll('.skill-chip');
-    const chipIO = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            const idx = [...chips].indexOf(entry.target);
-            setTimeout(() => {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }, idx * 55);
-            chipIO.unobserve(entry.target);
-        });
-    }, { threshold: 0.1 });
-    chips.forEach(chip => {
-        chip.style.opacity = '0';
-        chip.style.transform = 'translateY(10px)';
-        chip.style.transition = 'opacity 0.4s ease, transform 0.4s ease, background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, color 0.28s ease';
-        chipIO.observe(chip);
-    });
-
-    // Fade-in: project cards
-    const cards = document.querySelectorAll('.card');
-    const cardIO = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (!entry.isIntersecting) return;
-            setTimeout(() => {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }, i * 80);
-            cardIO.unobserve(entry.target);
-        });
-    }, { threshold: 0.1 });
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(18px)';
-        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.28s ease, box-shadow 0.28s ease';
-        cardIO.observe(card);
-    });
-
-    // Slide-in: highlight items
-    const items = document.querySelectorAll('.highlight-item');
-    const itemIO = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (!entry.isIntersecting) return;
-            setTimeout(() => {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateX(0)';
-            }, i * 100);
-            itemIO.unobserve(entry.target);
-        });
-    }, { threshold: 0.1 });
-    items.forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateX(-16px)';
-        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        itemIO.observe(item);
-    });
+// Smooth-scroll offset for sticky header
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const targetId = link.getAttribute('href');
+    if (targetId === '#' || targetId.length < 2) return;
+    const target = document.querySelector(targetId);
+    if (!target) return;
+    e.preventDefault();
+    const header = document.querySelector('.site-header');
+    const offset = (header ? header.offsetHeight : 0) + 12;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
 });
+
+// Reveal on scroll
+const revealTargets = document.querySelectorAll(
+  '.card, .grid-slot, .highlight-item, .about__content p, .skills-group, .senna-block__inner'
+);
+
+revealTargets.forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity .55s ease, transform .55s ease';
+});
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+revealTargets.forEach(el => io.observe(el));
+
+// Respect reduced motion
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  revealTargets.forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+    el.style.transition = 'none';
+  });
+}
