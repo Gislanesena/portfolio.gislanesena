@@ -1,229 +1,632 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gislane Sena — sena.dev</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gislane Sena — sena.dev</title>
+  <meta name="description" content="Portfólio da Gislane Sena — desenvolvedora full stack, Tech Lead na Banca da Ciência USP, fundadora do BuildXP." />
+  <meta name="theme-color" content="#0a0e14" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Racing+Sans+One&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-    <!-- TICKER -->
-    <div class="race-bar" aria-hidden="true">
-        <span class="race-bar__text">🏎️ &nbsp; GISLANE SENA &nbsp; · &nbsp; VELOCIDADE: MÁXIMA &nbsp; · &nbsp; STATUS: ONLINE &nbsp; · &nbsp; STACK: C# · .NET · PYTHON &nbsp; · &nbsp; 🏁 &nbsp; GISLANE SENA &nbsp; · &nbsp; VELOCIDADE: MÁXIMA &nbsp; · &nbsp; STATUS: ONLINE &nbsp; · &nbsp; STACK: C# · .NET · PYTHON &nbsp; · &nbsp;</span>
+  <!-- SCROLL PROGRESS (tachometer style) -->
+  <div class="tach" aria-hidden="true"><div class="tach__fill" id="tachFill"></div></div>
+
+  <!-- START LIGHTS OVERLAY (plays once) -->
+  <div class="start-lights" id="startLights" aria-hidden="true">
+    <div class="start-lights__row">
+      <span class="start-lights__pair"><i></i><i></i></span>
+      <span class="start-lights__pair"><i></i><i></i></span>
+      <span class="start-lights__pair"><i></i><i></i></span>
+      <span class="start-lights__pair"><i></i><i></i></span>
+      <span class="start-lights__pair"><i></i><i></i></span>
+    </div>
+    <div class="start-lights__go">GO GO GO</div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="race-bar" aria-hidden="true">
+    <div class="race-bar__track">
+      <span class="race-bar__text">🏎️ &nbsp; GISLANE SENA &nbsp;·&nbsp; PILOTO DE CÓDIGO &nbsp;·&nbsp; DRS ATIVADO &nbsp;·&nbsp; STACK: C# · .NET · JAVA · PYTHON &nbsp;·&nbsp; 🏁 &nbsp; LARGOU NA POLE &nbsp;·&nbsp; PISTA LIVRE &nbsp;·&nbsp; PRÓXIMO GP: DEZ/26 &nbsp;·&nbsp; PURPLE SECTOR &nbsp;·&nbsp;</span>
+      <span class="race-bar__text" aria-hidden="true">🏎️ &nbsp; GISLANE SENA &nbsp;·&nbsp; PILOTO DE CÓDIGO &nbsp;·&nbsp; DRS ATIVADO &nbsp;·&nbsp; STACK: C# · .NET · JAVA · PYTHON &nbsp;·&nbsp; 🏁 &nbsp; LARGOU NA POLE &nbsp;·&nbsp; PISTA LIVRE &nbsp;·&nbsp; PRÓXIMO GP: DEZ/26 &nbsp;·&nbsp; PURPLE SECTOR &nbsp;·&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- STICKY NAV -->
+  <header class="site-header">
+    <nav>
+      <div class="nav__brand">
+        <span class="nav__logo">sena<span class="nav__dot">.</span>dev</span>
+        <span class="nav__tagline">Código com foco em performance</span>
+      </div>
+      <div class="nav__links">
+        <a href="#about">Sobre</a>
+        <a href="#senna">Senna</a>
+        <a href="#grid">Grid</a>
+        <a href="#projects">Projetos</a>
+        <a href="#skills">Skills</a>
+        <a href="#highlights">Destaques</a>
+        <a href="#contact">Contato</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Apresentação">
+    <!-- Speed streaks background -->
+    <div class="hero__streaks" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span>
     </div>
 
-    <!-- STICKY NAV -->
-    <header class="site-header">
-        <nav>
-            <div class="nav__brand">
-                <span class="nav__logo">sena.dev</span>
-                <span class="nav__tagline">Código com foco em performance</span>
-            </div>
-            <div class="nav__links">
-                <a href="#about">Sobre</a>
-                <a href="#projects">Projetos</a>
-                <a href="#skills">Skills</a>
-                <a href="#highlights">Destaques</a>
-                <a href="#contact">Contato</a>
-            </div>
-        </nav>
-    </header>
+    <div class="hero__bg-num" aria-hidden="true">01</div>
 
-    <!-- HERO -->
-    <section class="hero" aria-label="Apresentação">
-        <div class="hero__bg-num" aria-hidden="true">01</div>
-        <div class="hero__content">
-            <p class="hero__eyebrow">🏁 Bem-vindo(a) ao box</p>
-            <h1 class="hero__title"><em>Sena</em></h1>
-            <p class="hero__sub">Desenvolvedora Full Stack &nbsp;·&nbsp; Piloto de Código</p>
-            <div class="hero__ctas">
-                <a href="#projects" class="btn btn--primary">Ver Projetos →</a>
-                <a href="#contact" class="btn btn--ghost">Entrar em Contato</a>
-            </div>
-        </div>
-        <div class="hero__stripe" aria-hidden="true"></div>
-    </section>
-
-    <!-- TELEMETRY BAR -->
-    <div class="telemetry" aria-label="Telemetria técnica">
-        <div class="telemetry__item"><span class="telemetry__label">STACK</span><span class="telemetry__value">C# · .NET · Python</span></div>
-        <div class="telemetry__sep" aria-hidden="true">|</div>
-        <div class="telemetry__item"><span class="telemetry__label">DB</span><span class="telemetry__value">PostgreSQL · SQL Server</span></div>
-        <div class="telemetry__sep" aria-hidden="true">|</div>
-        <div class="telemetry__item"><span class="telemetry__label">INFRA</span><span class="telemetry__value">Docker</span></div>
-        <div class="telemetry__sep" aria-hidden="true">|</div>
-        <div class="telemetry__item"><span class="telemetry__label">MODO</span><span class="telemetry__value status-dot">Disponível</span></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow"><span class="light"></span> Bem-vindo(a) ao box</p>
+      <h1 class="hero__title"><em>SENA</em></h1>
+      <p class="hero__sub">Desenvolvedora Full Stack &nbsp;·&nbsp; Piloto de Código &nbsp;·&nbsp; Fundadora do BuildXP</p>
+      <div class="hero__ctas">
+        <a href="#projects" class="btn btn--primary">Ver Projetos →</a>
+        <a href="#contact" class="btn btn--ghost">Entrar em Contato</a>
+      </div>
     </div>
 
-    <!-- SOBRE -->
-    <section id="about" class="section">
-        <div class="section-header">
-            <span class="section-number" aria-hidden="true">01</span>
-            <h2>Sobre Mim</h2>
+    <!-- F1 CAR SVG -->
+    <div class="hero__car" aria-hidden="true">
+      <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="carBody" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ff2d20"/>
+            <stop offset="1" stop-color="#8f0300"/>
+          </linearGradient>
+          <linearGradient id="carShine" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="rgba(255,255,255,0.35)"/>
+            <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Motion streaks behind car -->
+        <g class="car-streaks">
+          <line x1="-40" y1="80" x2="90" y2="80" stroke="#e10600" stroke-width="2" opacity="0.9"/>
+          <line x1="-60" y1="110" x2="70" y2="110" stroke="#f5c518" stroke-width="1.5" opacity="0.7"/>
+          <line x1="-30" y1="140" x2="80" y2="140" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
+          <line x1="-50" y1="170" x2="60" y2="170" stroke="#e10600" stroke-width="1.5" opacity="0.6"/>
+        </g>
+
+        <!-- Front wing -->
+        <path d="M 70 160 L 130 160 L 140 150 L 130 145 L 90 145 Z" fill="#0a0e14" stroke="#e10600" stroke-width="1"/>
+        <rect x="70" y="140" width="8" height="20" fill="#e10600"/>
+
+        <!-- Nose cone -->
+        <path d="M 130 145 Q 200 130 260 130 L 260 155 L 130 155 Z" fill="url(#carBody)"/>
+
+        <!-- Sidepod / body -->
+        <path d="M 260 130 Q 330 115 480 115 L 620 125 L 640 150 L 260 155 Z" fill="url(#carBody)"/>
+        <path d="M 260 130 Q 330 118 470 118 L 470 128 L 260 138 Z" fill="url(#carShine)"/>
+
+        <!-- Halo / cockpit -->
+        <path d="M 340 115 Q 370 78 410 80 Q 445 82 470 115" fill="none" stroke="#0a0e14" stroke-width="6" stroke-linecap="round"/>
+        <ellipse cx="405" cy="105" rx="30" ry="18" fill="#0a0e14"/>
+
+        <!-- Helmet peek (yellow Senna nod) -->
+        <ellipse cx="405" cy="102" rx="18" ry="14" fill="#f5c518"/>
+        <path d="M 387 96 Q 405 84 423 96 L 423 92 L 387 92 Z" fill="#009c3b"/>
+        <path d="M 395 108 L 415 108" stroke="#002776" stroke-width="2"/>
+
+        <!-- Airbox -->
+        <path d="M 445 82 L 490 90 L 500 115 L 470 115 Z" fill="#1a212c"/>
+
+        <!-- Rear wing -->
+        <rect x="620" y="80" width="10" height="70" fill="#0a0e14"/>
+        <rect x="605" y="80" width="45" height="14" fill="#e10600"/>
+        <rect x="600" y="98" width="55" height="8" fill="#0a0e14"/>
+
+        <!-- Rear tire -->
+        <circle cx="600" cy="165" r="30" fill="#111"/>
+        <circle cx="600" cy="165" r="30" fill="none" stroke="#f5c518" stroke-width="2" stroke-dasharray="4 4"/>
+        <circle cx="600" cy="165" r="12" fill="#1a212c"/>
+        <circle cx="600" cy="165" r="4" fill="#e10600"/>
+
+        <!-- Front tire -->
+        <circle cx="180" cy="165" r="26" fill="#111"/>
+        <circle cx="180" cy="165" r="26" fill="none" stroke="#f5c518" stroke-width="2" stroke-dasharray="4 4"/>
+        <circle cx="180" cy="165" r="10" fill="#1a212c"/>
+        <circle cx="180" cy="165" r="3" fill="#e10600"/>
+
+        <!-- Number on sidepod -->
+        <text x="380" y="145" font-family="Orbitron, sans-serif" font-weight="900" font-size="24" fill="#ffffff">01</text>
+
+        <!-- Small sponsor-y text -->
+        <text x="290" y="148" font-family="JetBrains Mono, monospace" font-weight="700" font-size="10" fill="#ffffff" opacity="0.9" letter-spacing="1">SENA</text>
+      </svg>
+    </div>
+
+    <div class="hero__stripe" aria-hidden="true"></div>
+  </section>
+
+  <!-- TELEMETRY BAR — SECTOR STYLE -->
+  <div class="telemetry" aria-label="Telemetria por setor">
+    <div class="telemetry__item telemetry__item--sector">
+      <span class="telemetry__sector s1">S1</span>
+      <span class="telemetry__label">STACK</span>
+      <span class="telemetry__value">C# · .NET · Java · Python</span>
+    </div>
+    <div class="telemetry__item telemetry__item--sector">
+      <span class="telemetry__sector s2">S2</span>
+      <span class="telemetry__label">DB</span>
+      <span class="telemetry__value">PostgreSQL · SQL Server</span>
+    </div>
+    <div class="telemetry__item telemetry__item--sector">
+      <span class="telemetry__sector s3">S3</span>
+      <span class="telemetry__label">CLOUD</span>
+      <span class="telemetry__value">AWS · Docker</span>
+    </div>
+    <div class="telemetry__item telemetry__item--sector">
+      <span class="telemetry__sector fastest">FL</span>
+      <span class="telemetry__label">MODO</span>
+      <span class="telemetry__value status-dot">Disponível</span>
+    </div>
+  </div>
+
+  <!-- SOBRE -->
+  <section id="about" class="section">
+    <div class="section-header">
+      <span class="section-number" aria-hidden="true">01</span>
+      <h2>Sobre Mim</h2>
+    </div>
+
+    <div class="about__content">
+      <p>Oi! Sou a <strong>Gislane Sena</strong> — sim, é esse sobrenome mesmo, e não, eu não corro em Interlagos <em>(ainda)</em>. Corro atrás de deploy, prazo de sprint e daquele bug que só aparece em produção. 🏎️</p>
+
+      <p>Sou estudante de tecnologia terminando a graduação em <strong>dez/26</strong>, e minha história com código começou por um motivo simples: tecnologia é uma das poucas coisas capazes de <strong>democratizar acesso de verdade</strong>. Ensino, saúde, oportunidade — se dá pra colocar num app, dá pra colocar na mão de mais gente. É isso que me move.</p>
+
+      <p>Hoje sou <strong>Tech Lead na Banca da Ciência da USP</strong>, <strong>Gerente de Projeto e Líder de Desenvolvimento na WoHackers</strong>, e <strong>fundadora do BuildXP</strong> — plataforma open source pra tornar o aprendizado em tech mais acessível. Já fui Líder de Dev na Connect Byte, construí sistema de gestão de hackathon para um evento na AWS, participei do hackathon sobre bitcoin e desenvolvi o SatVantage, e estou a todo vapor no curso de Java da Oracle University.</p>
+      <p class="about__punch">Ah — <strong>largo na pole e vou embora.</strong> É assim que eu gosto de correr.</p>
+    </div>
+  </section>
+
+  <!-- SENNA QUOTE -->
+  <section id="senna" class="senna-block" aria-label="Homenagem ao Ayrton Senna">
+    <div class="senna-block__inner">
+
+      <!-- Iconic Senna helmet -->
+      <div class="senna-block__helmet" aria-hidden="true">
+        <svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="helmShine" cx="0.3" cy="0.25" r="0.8">
+              <stop offset="0" stop-color="#ffe680" stop-opacity="0.9"/>
+              <stop offset="0.5" stop-color="#f5c518" stop-opacity="0.4"/>
+              <stop offset="1" stop-color="#f5c518" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Helmet main shape -->
+          <path d="M 60 140 Q 60 60 150 40 Q 240 60 240 140 L 240 200 Q 240 220 220 220 L 80 220 Q 60 220 60 200 Z" fill="#f5c518"/>
+
+          <!-- Shine highlight -->
+          <path d="M 60 140 Q 60 60 150 40 Q 240 60 240 140 L 240 200 Q 240 220 220 220 L 80 220 Q 60 220 60 200 Z" fill="url(#helmShine)"/>
+
+          <!-- Top green stripe -->
+          <path d="M 68 100 Q 68 68 150 55 Q 232 68 232 100 L 232 118 Q 150 105 68 118 Z" fill="#009c3b"/>
+
+          <!-- Blue horizontal band across visor area -->
+          <path d="M 60 140 Q 150 130 240 140 L 240 168 Q 150 158 60 168 Z" fill="#002776"/>
+
+          <!-- Visor -->
+          <path d="M 80 148 Q 150 140 220 148 L 218 178 Q 150 172 82 178 Z" fill="#111" opacity="0.85"/>
+          <path d="M 88 152 Q 150 146 212 152 L 212 158 Q 150 154 88 158 Z" fill="#ffffff" opacity="0.15"/>
+
+          <!-- Small green accent on chin -->
+          <rect x="120" y="205" width="60" height="6" fill="#009c3b"/>
+
+          <!-- S logo on side -->
+          <text x="90" y="200" font-family="Orbitron, sans-serif" font-weight="900" font-size="26" fill="#0a0e14">S</text>
+        </svg>
+      </div>
+
+      <div class="senna-block__text">
+        <span class="senna-block__label">🇧🇷 Combustível oficial</span>
+        <blockquote class="senna-block__quote">
+          "Não existem limites. Onde a mente do homem pode chegar, ele chega."
+        </blockquote>
+        <p class="senna-block__attr">— Ayrton Senna</p>
+        <p class="senna-block__note">Divido sobrenome, ambição e a mania de largar na frente. Aqui, cada projeto é uma volta buscando a purple.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GRID DE LARGADA -->
+  <section id="grid" class="section">
+    <div class="section-header">
+      <span class="section-number" aria-hidden="true">02</span>
+      <h2>Grid de Largada</h2>
+      <p class="section-sub">Da primeira volta até a linha de chegada — as posições que eu ocupei na pista.</p>
+    </div>
+
+    <ol class="grid-largada">
+      <li class="grid-slot">
+        <div class="grid-slot__pos">P1</div>
+        <div class="grid-slot__body">
+          <span class="grid-slot__meta">Founder · Open Source</span>
+          <h3>BuildXP</h3>
+          <p>Fundadora da plataforma que hoje é <strong>open source</strong>. Aprendizado em tech com terminal de treino, sistema de XP e foco em quem tá começando.</p>
         </div>
-        <div class="about__content">
-            <p>Sou desenvolvedora apaixonada por tecnologia, aprendizado contínuo e criação de soluções eficientes. Minha trajetória é construída através de projetos práticos, onde busco unir lógica, criatividade e qualidade no desenvolvimento.</p>
-            <p>Tenho experiência com desenvolvimento web, programação, bancos de dados e ferramentas de apoio ao desenvolvimento, sempre buscando evoluir minhas habilidades e explorar novos desafios.</p>
-            <p>Acredito que tecnologia é uma jornada de evolução constante: cada projeto é uma oportunidade de aprender, melhorar e construir algo com propósito.</p>
+      </li>
+
+      <li class="grid-slot">
+        <div class="grid-slot__pos">P2</div>
+        <div class="grid-slot__body">
+          <span class="grid-slot__meta">Tech Lead · atual</span>
+          <h3>Banca da Ciência — USP</h3>
+          <p>Liderança técnica no projeto de extensão que leva ciência pra escolas públicas. Tecnologia como ferramenta de divulgação científica.</p>
         </div>
-    </section>
+      </li>
 
-    <!-- PROJETOS -->
-    <section id="projects" class="section">
-        <div class="section-header">
-            <span class="section-number" aria-hidden="true">02</span>
-            <h2>Projetos</h2>
+      <li class="grid-slot">
+        <div class="grid-slot__pos">P3</div>
+        <div class="grid-slot__body">
+          <span class="grid-slot__meta">PM + Líder de Dev · atual</span>
+          <h3>WoHackers</h3>
+          <p>Gerência de projeto e liderança do desenvolvimento do sistema de gestão de hackathon. Comunidade de mulheres em tech ganhando ferramenta própria.</p>
         </div>
-        <div class="projects-grid">
+      </li>
 
-            <div class="card">
-                <div class="card__img-wrap">
-                    <img src="link_da_imagem" alt="BuildXP dev" loading="lazy">
-                    <div class="card__badge">P1</div>
-                </div>
-                <div class="card__body">
-                    <h3>BuildXP dev</h3>
-                    <p>Plataforma para tornar o aprendizado em tecnologia mais acessível e interativo. Ensina ferramentas e conceitos na prática, com terminal de treino e sistema de XP.</p>
-                    <a href="https://www.buildxpdev.com.br/" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver Projeto →</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card__img-wrap">
-                    <img src="link_da_imagem" alt="AxiomCode" loading="lazy">
-                    <div class="card__badge">P2</div>
-                </div>
-                <div class="card__body">
-                    <h3>AxiomCode</h3>
-                    <p>Ambiente acolhedor para calouros de tecnologia, com foco em inspirar e apoiar ao longo do curso — reduzindo o trancamento nos cursos de T.I.</p>
-                    <a href="https://github.com/Gislanesena/Projeto_Axiom" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver no GitHub →</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card__img-wrap">
-                    <img src="link_da_imagem" alt="Sistema para Clínicas Populares" loading="lazy">
-                    <div class="card__badge">P3</div>
-                </div>
-                <div class="card__body">
-                    <h3>Clínicas Populares</h3>
-                    <p>API REST para clínicas populares (SUS): prontuário eletrônico, agendamento, fila inteligente e Machine Learning para prever tempo de espera e risco de falta.</p>
-                    <a href="https://github.com/Gislanesena/clinica-popular" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver no GitHub →</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card__img-wrap">
-                    <img src="link_da_imagem" alt="Sistema de Gestão Ambiental" loading="lazy">
-                    <div class="card__badge">P4</div>
-                </div>
-                <div class="card__body">
-                    <h3>Gestão Ambiental</h3>
-                    <p>Sistema em C para gestão ambiental de startups: cadastro de indústrias, relatórios, documento fiscal e gerenciamento com PDCA, Scrum, PERT, Gantt e Kanban.</p>
-                    <a href="https://github.com/Gislanesena/Gerenciamento_Startup" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver no GitHub →</a>
-                </div>
-            </div>
-
+      <li class="grid-slot">
+        <div class="grid-slot__pos">P4</div>
+        <div class="grid-slot__body">
+          <span class="grid-slot__meta">Líder de Dev</span>
+          <h3>Connect Byte</h3>
+          <p>Construção do sistema de gestão do hackathon da Connect Byte com <strong>AWS</strong>. Da modelagem à infra, no volante do projeto.</p>
         </div>
-    </section>
+      </li>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-        <div class="section-header">
-            <span class="section-number" aria-hidden="true">03</span>
-            <h2>Habilidades</h2>
+      <li class="grid-slot">
+        <div class="grid-slot__pos">P5</div>
+        <div class="grid-slot__body">
+          <span class="grid-slot__meta">Hackathon</span>
+          <h3>SatVantage</h3>
+          <p>Projeto desenvolvido em hackathon. Mais uma volta rápida no cronômetro, mais aprendizado no bolso.</p>
         </div>
+      </li>
+
+      <li class="grid-slot">
+        <div class="grid-slot__pos">P6</div>
+        <div class="grid-slot__body">
+          <span class="grid-slot__meta">Formação · em andamento</span>
+          <h3>Java @ Oracle University</h3>
+          <p>Curso oficial de Java pela Oracle. Ampliando o stack pra atacar mais tipo de problema no back-end.</p>
+        </div>
+      </li>
+
+      <li class="grid-slot grid-slot--finish">
+        <div class="grid-slot__pos grid-slot__pos--flag" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="28" height="28">
+            <rect width="40" height="40" fill="#0a0e14"/>
+            <g fill="#f2f2f2">
+              <rect x="0" y="0" width="10" height="10"/>
+              <rect x="20" y="0" width="10" height="10"/>
+              <rect x="10" y="10" width="10" height="10"/>
+              <rect x="30" y="10" width="10" height="10"/>
+              <rect x="0" y="20" width="10" height="10"/>
+              <rect x="20" y="20" width="10" height="10"/>
+              <rect x="10" y="30" width="10" height="10"/>
+              <rect x="30" y="30" width="10" height="10"/>
+            </g>
+          </svg>
+        </div>
+        <div class="grid-slot__body">
+          <span class="grid-slot__meta">Linha de chegada · dez/26</span>
+          <h3>Formatura</h3>
+          <p>Encerro a graduação em dezembro de 2026. Mas volta de vitória mesmo é o próximo GP começando.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projects" class="section">
+    <div class="section-header">
+      <span class="section-number" aria-hidden="true">03</span>
+      <h2>Projetos</h2>
+      <p class="section-sub">O que já foi pra pista.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <article class="card card--fastest">
+        <div class="card__fastest-tag" aria-label="Fastest Lap">
+          <span>◆</span> FASTEST LAP
+        </div>
+        <div class="card__img-wrap">
+          <svg class="card__svg" viewBox="0 0 400 220" aria-hidden="true">
+            <defs>
+              <linearGradient id="grad-buildxp" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#e10600"/>
+                <stop offset="100%" stop-color="#7a0300"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="220" fill="url(#grad-buildxp)"/>
+            <g stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none">
+              <path d="M 0 180 Q 100 140 200 160 T 400 120"/>
+              <path d="M 0 200 Q 120 170 220 185 T 400 150"/>
+            </g>
+            <g transform="translate(200 110)">
+              <rect x="-70" y="-40" width="140" height="80" rx="4" fill="#0a0e14" stroke="#f2f2f2" stroke-width="2"/>
+              <text x="0" y="8" text-anchor="middle" fill="#f2f2f2" font-family="'JetBrains Mono', monospace" font-size="32" font-weight="700">+XP</text>
+            </g>
+          </svg>
+          <div class="card__badge">P1</div>
+        </div>
+        <div class="card__body">
+          <h3>BuildXP</h3>
+          <p>Plataforma open source pra tornar o aprendizado em tech mais acessível e interativo. Terminal de treino, sistema de XP e conteúdo prático.</p>
+          <div class="card__tags"><span>Founder</span><span>Open Source</span></div>
+          <a href="https://www.buildxpdev.com.br/" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver Projeto →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__img-wrap">
+          <svg class="card__svg" viewBox="0 0 400 220" aria-hidden="true">
+            <rect width="400" height="220" fill="#12171f"/>
+            <g stroke="rgba(225,6,0,0.4)" stroke-width="1" fill="none">
+              <circle cx="200" cy="110" r="80"/>
+              <circle cx="200" cy="110" r="55"/>
+              <circle cx="200" cy="110" r="30"/>
+            </g>
+            <circle cx="200" cy="110" r="6" fill="#e10600"/>
+            <circle cx="260" cy="75" r="4" fill="#f5c518"/>
+            <circle cx="145" cy="140" r="4" fill="#f2f2f2"/>
+            <text x="200" y="200" text-anchor="middle" fill="#8a929e" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="2">SIGNAL · OK</text>
+          </svg>
+          <div class="card__badge">P2</div>
+        </div>
+        <div class="card__body">
+          <h3>SatVantage</h3>
+          <p>Projeto desenvolvido em hackathon. Volta rápida, ideia validada, aprendizado guardado no capacete.</p>
+          <div class="card__tags"><span>Hackathon</span></div>
+          <a href="https://sat-vantage-gislanesena.vercel.app" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver Projeto →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__img-wrap">
+          <svg class="card__svg" viewBox="0 0 400 220" aria-hidden="true">
+            <rect width="400" height="220" fill="#1a1420"/>
+            <g fill="none" stroke="#f2f2f2" stroke-width="2" opacity="0.9">
+              <circle cx="140" cy="90" r="22"/>
+              <path d="M 108 155 Q 140 125 172 155"/>
+              <circle cx="220" cy="105" r="16"/>
+              <path d="M 197 155 Q 220 135 243 155"/>
+              <circle cx="285" cy="115" r="12"/>
+              <path d="M 268 155 Q 285 143 302 155"/>
+            </g>
+            <path d="M 40 190 L 360 190" stroke="#e10600" stroke-width="3"/>
+          </svg>
+          <div class="card__badge">P3</div>
+        </div>
+        <div class="card__body">
+          <h3>AxiomCode</h3>
+          <p>Ambiente acolhedor para calouros de tecnologia. Foco em inspirar e apoiar ao longo do curso, reduzindo trancamento em cursos de TI.</p>
+          <div class="card__tags"><span>Educação</span><span>Comunidade</span></div>
+          <a href="https://github.com/Gislanesena/Projeto_Axiom" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver no GitHub →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__img-wrap">
+          <svg class="card__svg" viewBox="0 0 400 220" aria-hidden="true">
+            <rect width="400" height="220" fill="#0f1a1a"/>
+            <g transform="translate(200 110)">
+              <rect x="-45" y="-45" width="90" height="90" rx="8" fill="#0a0e14" stroke="#e10600" stroke-width="2"/>
+              <rect x="-30" y="-10" width="60" height="20" fill="#e10600"/>
+              <rect x="-10" y="-30" width="20" height="60" fill="#e10600"/>
+            </g>
+            <text x="200" y="200" text-anchor="middle" fill="#8a929e" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="2">SUS · API · ML</text>
+          </svg>
+          <div class="card__badge">P4</div>
+        </div>
+        <div class="card__body">
+          <h3>Clínicas Populares</h3>
+          <p>API REST para clínicas do SUS: prontuário eletrônico, agendamento, fila inteligente e ML pra prever tempo de espera e risco de falta.</p>
+          <div class="card__tags"><span>API REST</span><span>Machine Learning</span></div>
+          <a href="https://github.com/RaphaSimoes/vittamed-acolher" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver no GitHub →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__img-wrap">
+          <svg class="card__svg" viewBox="0 0 400 220" aria-hidden="true">
+            <rect width="400" height="220" fill="#0e1a12"/>
+            <g transform="translate(200 110)">
+              <path d="M 0 -50 Q 40 -20 30 20 Q 0 50 -30 20 Q -40 -20 0 -50 Z" fill="#1a3a20" stroke="#3ea55c" stroke-width="2"/>
+              <path d="M 0 -50 L 0 40" stroke="#3ea55c" stroke-width="1.5"/>
+              <path d="M 0 -20 L 20 0 M 0 -20 L -20 0 M 0 5 L 15 20 M 0 5 L -15 20" stroke="#3ea55c" stroke-width="1"/>
+            </g>
+            <text x="200" y="200" text-anchor="middle" fill="#8a929e" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="2">C · PDCA · SCRUM</text>
+          </svg>
+          <div class="card__badge">P5</div>
+        </div>
+        <div class="card__body">
+          <h3>Gestão Ambiental</h3>
+          <p>Sistema em C para gestão ambiental de startups: cadastro de indústrias, relatórios e gerenciamento com PDCA, Scrum, PERT, Gantt e Kanban.</p>
+          <div class="card__tags"><span>C</span><span>Metodologias Ágeis</span></div>
+          <a href="https://github.com/Gislanesena/Gerenciamento_Startup" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver no GitHub →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="section-header">
+      <span class="section-number" aria-hidden="true">04</span>
+      <h2>Habilidades</h2>
+      <p class="section-sub">O que tem debaixo do capô.</p>
+    </div>
+
+    <div class="skills-groups">
+      <div class="skills-group">
+        <span class="skills-group__label">◆ Linguagens</span>
         <div class="skills-grid">
-            <div class="skill-chip"><span class="skill-chip__icon" aria-hidden="true">⚡</span>C#</div>
-            <div class="skill-chip"><span class="skill-chip__icon" aria-hidden="true">⚡</span>.NET</div>
-            <div class="skill-chip"><span class="skill-chip__icon" aria-hidden="true">⚡</span>Python</div>
-            <div class="skill-chip"><span class="skill-chip__icon" aria-hidden="true">🗄️</span>PostgreSQL</div>
-            <div class="skill-chip"><span class="skill-chip__icon" aria-hidden="true">🗄️</span>SQL Server</div>
-            <div class="skill-chip"><span class="skill-chip__icon" aria-hidden="true">🐳</span>Docker</div>
-            <div class="skill-chip"><span class="skill-chip__icon" aria-hidden="true">🛠️</span>DBeaver</div>
+          <div class="skill-chip">C#</div>
+          <div class="skill-chip">.NET</div>
+          <div class="skill-chip">Java</div>
+          <div class="skill-chip">Python</div>
+          <div class="skill-chip">NODE.js</div>
+          <div class="skill-chip">C</div>
+          <div class="skill-chip">HTML</div>
+          <div class="skill-chip">CSS</div>
+          <div class="skill-chip">JavaScript</div>
         </div>
-    </section>
+      </div>
 
-    <!-- DESTAQUES -->
-    <section id="highlights" class="section">
-        <div class="section-header">
-            <span class="section-number" aria-hidden="true">04</span>
-            <h2>Destaques</h2>
+      <div class="skills-group">
+        <span class="skills-group__label">◆ Dados</span>
+        <div class="skills-grid">
+          <div class="skill-chip">PostgreSQL</div>
+          <div class="skill-chip">SQL Server</div>
+          <div class="skill-chip">DBeaver</div>
         </div>
-        <div class="highlights-list">
+      </div>
 
-            <div class="highlight-item">
-                <div class="highlight-item__img-wrap">
-                    <img src="link_da_imagem" alt="Construindo na prática" loading="lazy">
-                    <div class="highlight-item__badge" aria-hidden="true">🔧</div>
-                </div>
-                <div class="highlight-item__body">
-                    <span class="highlight-item__tag">Prática</span>
-                    <h3>Construindo na prática</h3>
-                    <p>Desenvolvimento de projetos próprios e colaborativos, transformando ideias em aplicações reais e evoluindo constantemente minhas habilidades técnicas.</p>
-                </div>
-            </div>
-
-            <div class="highlight-item">
-                <div class="highlight-item__img-wrap">
-                    <img src="link_da_imagem" alt="Projetos com propósito" loading="lazy">
-                    <div class="highlight-item__badge" aria-hidden="true">🎯</div>
-                </div>
-                <div class="highlight-item__body">
-                    <span class="highlight-item__tag">Impacto</span>
-                    <h3>Projetos com propósito</h3>
-                    <p>Participação em iniciativas que unem tecnologia, comunidade e aprendizado, buscando criar soluções acessíveis e que gerem impacto.</p>
-                </div>
-            </div>
-
-            <div class="highlight-item">
-                <div class="highlight-item__img-wrap">
-                    <img src="link_da_imagem" alt="Experiência em desenvolvimento" loading="lazy">
-                    <div class="highlight-item__badge" aria-hidden="true">💻</div>
-                </div>
-                <div class="highlight-item__body">
-                    <span class="highlight-item__tag">Experiência</span>
-                    <h3>Experiência em desenvolvimento</h3>
-                    <p>Atuação com desenvolvimento web, regras de negócio, manutenção de sistemas e criação de soluções utilizando diferentes tecnologias.</p>
-                </div>
-            </div>
-
-            <div class="highlight-item">
-                <div class="highlight-item__img-wrap">
-                    <img src="link_da_imagem" alt="Minha pista até aqui" loading="lazy">
-                    <div class="highlight-item__badge" aria-hidden="true">🏁</div>
-                </div>
-                <div class="highlight-item__body">
-                    <span class="highlight-item__tag">Evolução</span>
-                    <h3>Minha pista até aqui</h3>
-                    <p>Cada projeto representa uma nova etapa da minha evolução: novos desafios, novas tecnologias e novas oportunidades de melhorar.</p>
-                </div>
-            </div>
-
+      <div class="skills-group">
+        <span class="skills-group__label">◆ Infra & Cloud</span>
+        <div class="skills-grid">
+          <div class="skill-chip">SDK</div>
+          <div class="skill-chip">Docker</div>
+          <div class="skill-chip">GIT & GitHub</div>
         </div>
-    </section>
+      </div>
 
-    <!-- CONTATO -->
-    <footer id="contact">
-        <div class="footer__stripe" aria-hidden="true"></div>
-        <div class="footer__inner">
-            <div class="section-header" style="justify-content:center;">
-                <span class="section-number" aria-hidden="true">05</span>
-                <h2>Contato</h2>
-            </div>
-            <p class="footer__tagline">Pronta para o próximo GP. Vamos pilotar juntos?</p>
-            <a href="mailto:gislane.sena@icloud.com" class="footer__email">gislane.sena@icloud.com</a>
-            <div class="social-icons">
-                <a href="https://github.com/GislaneSena" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://linkedin.com/in/GislaneSena" target="_blank" rel="noopener">LinkedIn</a>
-            </div>
-            <p class="footer__copy">© 2025 Gislane Sena · Feito na pole position 🏆</p>
+      <div class="skills-group">
+        <span class="skills-group__label">◆ Gestão</span>
+        <div class="skills-grid">
+          <div class="skill-chip">Scrum</div>
+          <div class="skill-chip">Kanban</div>
+          <div class="skill-chip">PDCA</div>
+          <div class="skill-chip">Liderança Técnica</div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- DESTAQUES -->
+  <section id="highlights" class="section">
+    <div class="section-header">
+      <span class="section-number" aria-hidden="true">05</span>
+      <h2>Destaques</h2>
+      <p class="section-sub">Fora da pista também tem GP.</p>
+    </div>
+
+    <div class="highlights-list">
+
+      <div class="highlight-item">
+        <div class="highlight-item__img-wrap">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <rect width="120" height="120" fill="#12171f"/>
+            <g transform="translate(60 60)" stroke="#e10600" stroke-width="2" fill="none">
+              <rect x="-25" y="-30" width="50" height="60" rx="3"/>
+              <line x1="-15" y1="-15" x2="15" y2="-15"/>
+              <line x1="-15" y1="-5" x2="15" y2="-5"/>
+              <line x1="-15" y1="5" x2="10" y2="5"/>
+              <line x1="-15" y1="15" x2="15" y2="15"/>
+            </g>
+          </svg>
+          <div class="highlight-item__badge">📖</div>
+        </div>
+        <div class="highlight-item__body">
+          <span class="highlight-item__tag">Leitora compulsiva</span>
+          <h3>Livro do lado da segunda tela</h3>
+          <p>Leio muito. É de onde vem metade da paciência pra debugar e a outra metade pra imaginar produto novo. Herói, aventura, magia e ficção — se tem espada ou multiverso, tô dentro.</p>
+        </div>
+      </div>
+
+      <div class="highlight-item">
+        <div class="highlight-item__img-wrap">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <rect width="120" height="120" fill="#1a1420"/>
+            <g transform="translate(60 60)">
+              <path d="M -30 -20 Q -10 -35 10 -20 Q 25 -5 15 15 Q 0 30 -15 15 Q -35 0 -30 -20 Z" fill="#4a2a5c" opacity="0.8"/>
+              <path d="M -10 -10 Q 5 -20 15 -5 Q 20 8 5 15 Q -10 12 -10 -10 Z" fill="#7a4a8c" opacity="0.7"/>
+              <circle cx="0" cy="0" r="2" fill="#f5c518"/>
+            </g>
+          </svg>
+          <div class="highlight-item__badge">🎨</div>
+        </div>
+        <div class="highlight-item__body">
+          <span class="highlight-item__tag">Aquarela</span>
+          <h3>Pinto pra desligar o cérebro</h3>
+          <p>Aquarela ensina uma coisa que código também ensina: você não controla tudo, e às vezes o "erro" fica mais bonito que o plano. Meu jeito de resetar entre um sprint e outro.</p>
+        </div>
+      </div>
+
+      <div class="highlight-item">
+        <div class="highlight-item__img-wrap">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <rect width="120" height="120" fill="#0e1a1f"/>
+            <g transform="translate(60 60)" fill="#f2f2f2" font-family="'JetBrains Mono', monospace" font-weight="600">
+              <text x="0" y="-8" text-anchor="middle" font-size="26">∑</text>
+              <text x="0" y="22" text-anchor="middle" font-size="10" fill="#8a929e">MATH · RUN</text>
+            </g>
+          </svg>
+          <div class="highlight-item__badge">🧮</div>
+        </div>
+        <div class="highlight-item__body">
+          <span class="highlight-item__tag">Matemática por conta</span>
+          <h3>Treino diário, na marra</h3>
+          <p>Estudo matemática por fora porque me acho ruim e isso me incomoda. Spoiler: talvez eu não seja tão ruim, mas prefiro treinar. É o mesmo princípio de piloto que só melhora andando de kart todo dia.</p>
+        </div>
+      </div>
+
+      <div class="highlight-item">
+        <div class="highlight-item__img-wrap">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <rect width="120" height="120" fill="#12171f"/>
+            <g transform="translate(60 60)" fill="none" stroke="#e10600" stroke-width="2">
+              <circle cx="0" cy="0" r="30"/>
+              <path d="M -30 0 L 30 0 M 0 -30 L 0 30" opacity="0.5"/>
+              <circle cx="0" cy="0" r="6" fill="#e10600"/>
+            </g>
+          </svg>
+          <div class="highlight-item__badge">🎯</div>
+        </div>
+        <div class="highlight-item__body">
+          <span class="highlight-item__tag">Propósito</span>
+          <h3>Tech que democratiza</h3>
+          <p>Entrei em código porque tecnologia democratiza acesso — ensino, saúde, oportunidade. BuildXP, Banca da Ciência USP, Clínicas Populares: tudo mira nisso. É o combustível que faz o resto andar.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <footer id="contact">
+    <div class="footer__stripe" aria-hidden="true"></div>
+    <div class="footer__inner">
+      <div class="section-header" style="justify-content:center;">
+        <span class="section-number" aria-hidden="true">06</span>
+        <h2>Contato</h2>
+      </div>
+      <p class="footer__tagline">Pronta para o próximo GP. Vamos pilotar juntos?</p>
+      <a href="mailto:gislane.sena@icloud.com" class="footer__email">gislane.sena@icloud.com</a>
+      <div class="social-icons">
+        <a href="https://github.com/Gislanesena" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/gislanesena" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p class="footer__copy">© 2025 Gislane Sena · Feito na pole position 🏆</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
