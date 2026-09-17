@@ -41,9 +41,9 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-// Reveal on scroll
+// Reveal on scroll (skip carousel slides — they stay visible for autoplay)
 const revealTargets = document.querySelectorAll(
-  '.card, .grid-slot, .highlight-item, .about__content p, .skills-group, .senna-block__inner'
+  '.grid-slot, .about__content p, .skills-group, .senna-block__inner'
 );
 
 revealTargets.forEach(el => {
@@ -64,11 +64,166 @@ const io = new IntersectionObserver((entries) => {
 
 revealTargets.forEach(el => io.observe(el));
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // Respect reduced motion
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+if (prefersReducedMotion) {
   revealTargets.forEach(el => {
     el.style.opacity = '1';
     el.style.transform = 'none';
     el.style.transition = 'none';
   });
 }
+
+// Auto-scrolling carousels (projects + highlights + grid mobile)
+const MOBILE_CAROUSEL_MQ = window.matchMedia('(max-width: 720px)');
+
+function initCarousel(track, { mobileOnly = false } = {}) {
+  let running = false;
+  let paused = false;
+  let dragging = false;
+  let startX = 0;
+  let startScroll = 0;
+  let moved = false;
+  let halfWidth = 0;
+  let rafId = 0;
+  let cloneCount = 0;
+  const speed = 0.85;
+  const cleanups = [];
+
+  const on = (target, type, handler, opts) => {
+    target.addEventListener(type, handler, opts);
+    cleanups.push(() => target.removeEventListener(type, handler, opts));
+  };
+
+  const pause = () => { paused = true; track.classList.add('is-paused'); };
+  const resume = () => {
+    if (dragging) return;
+    paused = false;
+    track.classList.remove('is-paused');
+  };
+
+  const measure = () => {
+    halfWidth = track.scrollWidth / 2;
+  };
+
+  const loopScroll = () => {
+    if (halfWidth > 0 && track.scrollLeft >= halfWidth) {
+      track.scrollLeft -= halfWidth;
+    }
+  };
+
+  const tick = () => {
+    if (!running) return;
+    if (!paused && !prefersReducedMotion && !document.hidden) {
+      track.scrollLeft += speed;
+      loopScroll();
+    }
+    rafId = requestAnimationFrame(tick);
+  };
+
+  const start = () => {
+    if (running) return;
+    running = true;
+    paused = false;
+    dragging = false;
+    moved = false;
+
+    const originals = Array.from(track.children);
+    if (originals.length < 2) {
+      running = false;
+      return;
+    }
+
+    originals.forEach(child => {
+      const clone = child.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.querySelectorAll('a').forEach(a => a.setAttribute('tabindex', '-1'));
+      track.appendChild(clone);
+      cloneCount += 1;
+    });
+
+    on(track, 'mouseenter', pause);
+    on(track, 'mouseleave', resume);
+    on(track, 'focusin', pause);
+    on(track, 'focusout', (e) => {
+      if (!track.contains(e.relatedTarget)) resume();
+    });
+    on(track, 'touchstart', pause, { passive: true });
+    on(track, 'touchend', () => setTimeout(resume, 900), { passive: true });
+    on(track, 'touchcancel', () => setTimeout(resume, 900), { passive: true });
+
+    on(track, 'pointerdown', (e) => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      dragging = true;
+      moved = false;
+      startX = e.clientX;
+      startScroll = track.scrollLeft;
+      track.classList.add('is-dragging');
+      pause();
+      track.setPointerCapture?.(e.pointerId);
+    });
+
+    on(track, 'pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) moved = true;
+      track.scrollLeft = startScroll - dx;
+    });
+
+    const endDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+      track.classList.remove('is-dragging');
+      setTimeout(resume, 0);
+    };
+
+    on(track, 'pointerup', endDrag);
+    on(track, 'pointercancel', endDrag);
+    on(track, 'click', (e) => {
+      if (moved) {
+        e.preventDefault();
+        e.stopPropagation();
+        moved = false;
+      }
+    }, true);
+
+    on(track, 'scroll', loopScroll, { passive: true });
+    on(window, 'resize', measure);
+
+    requestAnimationFrame(() => {
+      measure();
+      if (!prefersReducedMotion) rafId = requestAnimationFrame(tick);
+    });
+  };
+
+  const stop = () => {
+    if (!running) return;
+    running = false;
+    cancelAnimationFrame(rafId);
+    cleanups.splice(0).forEach(fn => fn());
+    while (cloneCount > 0 && track.lastElementChild) {
+      track.removeChild(track.lastElementChild);
+      cloneCount -= 1;
+    }
+    track.scrollLeft = 0;
+    track.classList.remove('is-paused', 'is-dragging');
+    paused = false;
+    dragging = false;
+  };
+
+  const sync = () => {
+    if (!mobileOnly || MOBILE_CAROUSEL_MQ.matches) start();
+    else stop();
+  };
+
+  sync();
+  if (mobileOnly) {
+    MOBILE_CAROUSEL_MQ.addEventListener('change', sync);
+  }
+}
+
+document.querySelectorAll('[data-carousel]').forEach(track => initCarousel(track));
+document.querySelectorAll('[data-carousel-mobile]').forEach(track => {
+  initCarousel(track, { mobileOnly: true });
+});
