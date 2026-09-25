@@ -15,15 +15,26 @@ window.addEventListener('scroll', updateTach, { passive: true });
 updateTach();
 
 // Skip start-lights on subsequent visits within session
+function playHeroEnter(){
+  const hero = document.querySelector('.hero');
+  if (hero) hero.classList.add('hero--enter');
+}
+
 if (sessionStorage.getItem('lightsShown') === '1') {
   document.body.classList.add('no-lights');
+  requestAnimationFrame(() => requestAnimationFrame(playHeroEnter));
 } else {
   sessionStorage.setItem('lightsShown', '1');
   // Remove overlay from DOM after animation to avoid blocking
   setTimeout(() => {
     const el = document.getElementById('startLights');
     if (el) el.remove();
-  }, 5400);
+    playHeroEnter();
+  }, 5100);
+}
+
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  playHeroEnter();
 }
 
 // Smooth-scroll offset for sticky header
