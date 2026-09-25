@@ -269,10 +269,10 @@ body.no-lights .start-lights{ display:none; }
 
 .hero__bg-num{
   position:absolute;
-  right:-60px; top:-40px;
+  right:5px; top:-20px;
   font-family:var(--font-display);
-  font-weight:900;
-  font-size:clamp(180px, 40vw, 500px);
+  font-weight:3000;
+  font-size:clamp(600px, 40vw, 1000px);
   line-height:1;
   color:var(--white-fade);
   pointer-events:none;
@@ -1080,7 +1080,7 @@ footer#contact{
   .senna-block__quote::before{ display:none; }
   .senna-block__helmet{ flex-basis:200px; }
   .hero{ padding:80px var(--pad-x) 100px; }
-  .hero__bg-num{ font-size:clamp(180px, 40vw, 320px); right:-30px; }
+  .hero__bg-num{ font-size:clamp(210px, 20vw, 300px); right:10px; top:50px; }
   .section{ padding:80px var(--pad-x); }
 }
 
@@ -1106,7 +1106,7 @@ footer#contact{
   .nav__links a{ font-size:13px; white-space:nowrap; flex-shrink:0; }
 
   .hero{ padding:60px var(--pad-x) 60px; }
-  .hero__title{ font-size:clamp(54px, 18vw, 120px); letter-spacing:-1px; }
+  .hero__title{ font-size:clamp(54px, 18vw, 120px); letter-spacing:-1px; top:-100px; }
   .hero__sub{ font-size:16px; margin-bottom:28px; }
   .hero__eyebrow{ font-size:12px; margin-bottom:18px; }
   .hero__ctas{ gap:10px; }
