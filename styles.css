@@ -110,6 +110,12 @@ a{ color:inherit; }
 @keyframes lightOn{
   to{ background:#ff1400; box-shadow:0 0 24px #ff1400, 0 0 40px rgba(255,20,0,0.6); }
 }
+
+.start-lights__pair.start-lights__pair_ult i{ animation-name:lightOnGreen; }
+@keyframes lightOnGreen{
+  to{ background:#00ff0d; box-shadow:0 0 24px #00ff0d, 0 0 40px rgba(0,255,13,0.6); }
+}
+
 .start-lights__go{
   font-family:var(--font-race);
   font-size:clamp(28px, 8vw, 56px);
