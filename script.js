@@ -238,3 +238,106 @@ document.querySelectorAll('[data-carousel]').forEach(track => initCarousel(track
 document.querySelectorAll('[data-carousel-mobile]').forEach(track => {
   initCarousel(track, { mobileOnly: true });
 });
+
+/* ================== TEAM RADIO CHAT (GROQ + EFEITO DIGITAÇÃO) ================== */
+(() => {
+  const form = document.getElementById("chatForm");
+  const input = document.getElementById("chatInput");
+  const submitBtn = document.getElementById("chatSubmit");
+  const messagesBox = document.getElementById("chatMessages");
+  const chipsContainer = document.getElementById("chatChips");
+
+  if (!form || !input || !messagesBox) return;
+
+  let ocupada = false;
+
+  // Cria o balão da mensagem no DOM
+  function criarMensagem(autor, textoInicial = "") {
+    const wrapper = document.createElement("div");
+    wrapper.className = `pit-msg ${autor === "user" ? "pit-msg--user" : "pit-msg--agent"}`;
+
+    const sender = document.createElement("span");
+    sender.className = "pit-msg__sender";
+    sender.textContent = autor === "user" ? "VOCÊ · PADDOCK" : "GISLANE SENA · BOX";
+
+    const p = document.createElement("p");
+    p.className = "pit-msg__text";
+    p.textContent = textoInicial;
+
+    wrapper.appendChild(sender);
+    wrapper.appendChild(p);
+    messagesBox.appendChild(wrapper);
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+
+    return p;
+  }
+
+  // Efeito máquina de escrever letra por letra
+  function digitarTexto(elementoParagrafo, textoCompleto) {
+    return new Promise((resolve) => {
+      let indice = 0;
+      const intervalo = setInterval(() => {
+        indice += 2;
+        elementoParagrafo.textContent = textoCompleto.slice(0, indice);
+        messagesBox.scrollTop = messagesBox.scrollHeight;
+
+        if (indice >= textoCompleto.length) {
+          clearInterval(intervalo);
+          resolve();
+        }
+      }, 15);
+    });
+  }
+
+  async function enviarMensagem(texto) {
+    const pergunta = texto.trim();
+    if (!pergunta || ocupada) return;
+
+    ocupada = true;
+    input.value = "";
+    input.disabled = true;
+    submitBtn.disabled = true;
+
+    criarMensagem("user", pergunta);
+    const paragrafoAgente = criarMensagem("agent", "Sintonizando rádio...");
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mensagem: pergunta })
+      });
+
+      const data = await res.json();
+      const resposta = data.resposta_terminal || "Sem sinal do box no momento. Tente novamente!";
+
+      paragrafoAgente.textContent = "";
+      await digitarTexto(paragrafoAgente, resposta);
+    } catch {
+      paragrafoAgente.textContent = "";
+      await digitarTexto(
+        paragrafoAgente,
+        "[SINAL INTERROMPIDO]: Não consegui conectar ao servidor agora. Tente novamente em instantes!"
+      );
+    } finally {
+      ocupada = false;
+      input.disabled = false;
+      submitBtn.disabled = false;
+      input.focus();
+    }
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    enviarMensagem(input.value);
+  });
+
+  if (chipsContainer) {
+    chipsContainer.addEventListener("click", (e) => {
+      const chip = e.target.closest(".pit-chip");
+      if (!chip || ocupada) return;
+      const pergunta = chip.getAttribute("data-question") || chip.textContent;
+      enviarMensagem(pergunta);
+    });
+  }
+})();

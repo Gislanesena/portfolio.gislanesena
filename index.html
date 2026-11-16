@@ -182,19 +182,56 @@
   </div>
 
   <!-- SOBRE -->
+  <!-- SOBRE (TEAM RADIO / CHAT INTERATIVO) -->
   <section id="about" class="section">
     <div class="section-header">
       <span class="section-number" aria-hidden="true">01</span>
       <h2>Sobre Mim</h2>
+      <p class="section-sub">Canal direto com o box — pergunte sobre minha trajetória, projetos ou stack.</p>
     </div>
 
-    <div class="about__content">
-      <p>Oi! Sou a <strong>Gislane Sena</strong> — sim, <em>Sena</em>. Mas minha corrida acontece em outro circuito: o da tecnologia. 🏎️</p>
+    <div class="pit-radio" aria-label="Chat interativo com Gislane Sena">
+      <!-- Barra superior estilo telemetria / rádio de equipe -->
+      <div class="pit-radio__header">
+        <div class="pit-radio__status">
+          <span class="pit-radio__led" aria-hidden="true"></span>
+          <span class="pit-radio__channel">TEAM RADIO · CAR 01</span>
+        </div>
+        <span class="pit-radio__freq">FREQ: SENA.DEV // ONLINE</span>
+      </div>
 
-      <p>Sou estudante de tecnologia terminando a graduação, e minha história com código começou por um motivo simples: tecnologia é uma das poucas coisas capazes de <strong>democratizar acesso de verdade</strong>. Ensino, saúde, oportunidade — se dá pra colocar num app, dá pra colocar na mão de mais gente. É isso que me move.</p>
+      <!-- Área de mensagens -->
+      <div class="pit-radio__messages" id="chatMessages" role="log" aria-live="polite">
+        <div class="pit-msg pit-msg--agent">
+          <span class="pit-msg__sender">GISLANE SENA · BOX</span>
+          <p class="pit-msg__text">
+            Oi! Sou a <strong>Gislane Sena</strong> — sim, <em>Sena</em>, mas minha corrida acontece no circuito da tecnologia. 🏎️ Pergunte o que quiser sobre minha graduação, liderança na USP e WoHackers, o BuildXP ou meus estudos em Segurança da Informação!
+          </p>
+        </div>
+      </div>
 
-      <p>Hoje sou <strong>Coordenadora de Projeto na Banca da Ciência da USP</strong>, <strong>Gerente de Projeto e Líder de Desenvolvimento na WoHackers</strong>, e <strong>fundadora do BuildXP</strong> — plataforma open source pra tornar o aprendizado em tech mais acessível. Atualmente, estou me aprofundando em Segurança da Informação, explorando o universo de cibersegurança, redes e tudo que envolve proteger sistemas antes que alguém tente colocá-los fora da pista.</p>
-      <p class="about__punch">Ah — <strong>Entro na pista com curiosidade e sigo acelerando em direção ao que ainda não sei.</strong></p>
+      <!-- Perguntas rápidas (atalhos) -->
+      <div class="pit-radio__chips" id="chatChips">
+        <button type="button" class="pit-chip" data-question="Quem é você e o que te move na tecnologia?">Quem é você?</button>
+        <button type="button" class="pit-chip" data-question="Me conta sobre sua liderança na USP e na WoHackers">Liderança &amp; Comunidade</button>
+        <button type="button" class="pit-chip" data-question="O que é o BuildXP e como surgiu?">O que é o BuildXP?</button>
+        <button type="button" class="pit-chip" data-question="O que você está estudando em Segurança da Informação?">Segurança da Info</button>
+      </div>
+
+      <!-- Campo de envio -->
+      <form class="pit-radio__form" id="chatForm">
+        <input
+          type="text"
+          id="chatInput"
+          class="pit-radio__input"
+          placeholder="Envie uma mensagem para o box (ex: Qual sua stack principal?)..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit" id="chatSubmit" class="btn btn--primary btn--sm pit-radio__btn">
+          Enviar →
+        </button>
+      </form>
     </div>
   </section>
 
@@ -502,114 +539,7 @@
     </div>
   </section>
 
-  <!-- DESTAQUES -->
-  <section id="highlights" class="section">
-    <div class="section-header">
-      <span class="section-number" aria-hidden="true">05</span>
-      <h2>Destaques</h2>
-      <p class="section-sub">Fora da pista também tem GP.</p>
-    </div>
 
-    <div class="highlights-list carousel" data-carousel aria-label="Carrossel de destaques">
-
-      <div class="highlight-item">
-        <div class="highlight-item__img-wrap">
-          <svg viewBox="0 0 120 120" aria-hidden="true">
-            <rect width="120" height="120" fill="#12171f"/>
-            <g transform="translate(60 60)" stroke="#e10600" stroke-width="2" fill="none">
-              <rect x="-25" y="-30" width="50" height="60" rx="3"/>
-              <line x1="-15" y1="-15" x2="15" y2="-15"/>
-              <line x1="-15" y1="-5" x2="15" y2="-5"/>
-              <line x1="-15" y1="5" x2="10" y2="5"/>
-              <line x1="-15" y1="15" x2="15" y2="15"/>
-            </g>
-          </svg>
-          <div class="highlight-item__badge">📖</div>
-        </div>
-        <div class="highlight-item__body">
-          <span class="highlight-item__tag">Leitora compulsiva</span>
-          <h3>Livro do lado da segunda tela</h3>
-          <p>Leio muito. É de onde vem metade da paciência pra debugar e a outra metade pra imaginar produto novo. Herói, aventura, magia e ficção — se tem espada ou multiverso, tô dentro.</p>
-        </div>
-      </div>
-
-      <div class="highlight-item">
-        <div class="highlight-item__img-wrap">
-          <svg viewBox="0 0 120 120" aria-hidden="true">
-            <rect width="120" height="120" fill="#1a1420"/>
-            <g transform="translate(60 60)">
-              <path d="M -30 -20 Q -10 -35 10 -20 Q 25 -5 15 15 Q 0 30 -15 15 Q -35 0 -30 -20 Z" fill="#4a2a5c" opacity="0.8"/>
-              <path d="M -10 -10 Q 5 -20 15 -5 Q 20 8 5 15 Q -10 12 -10 -10 Z" fill="#7a4a8c" opacity="0.7"/>
-              <circle cx="0" cy="0" r="2" fill="#f5c518"/>
-            </g>
-          </svg>
-          <div class="highlight-item__badge">🎨</div>
-        </div>
-        <div class="highlight-item__body">
-          <span class="highlight-item__tag">Aquarela</span>
-          <h3>Criatividade Fomentada</h3>
-          <p>Aquarela ensina uma coisa que código também ensina: você não controla tudo, e às vezes o "erro" fica mais bonito que o plano.</p>
-        </div>
-      </div>
-
-      <div class="highlight-item">
-        <div class="highlight-item__img-wrap">
-          <svg viewBox="0 0 120 120" aria-hidden="true">
-            <rect width="120" height="120" fill="#0e1a1f"/>
-            <g transform="translate(60 60)" fill="#f2f2f2" font-family="'JetBrains Mono', monospace" font-weight="600">
-              <text x="0" y="-8" text-anchor="middle" font-size="26">∑</text>
-              <text x="0" y="22" text-anchor="middle" font-size="10" fill="#8a929e">MATH · RUN</text>
-            </g>
-          </svg>
-          <div class="highlight-item__badge">🧮</div>
-        </div>
-        <div class="highlight-item__body">
-          <span class="highlight-item__tag">Matemática por conta</span>
-          <h3>Treino diário, na marra</h3>
-          <p>Treino diário, na marra. Mesmo princípio do piloto que só melhora andando de kart todo dia.</p>
-        </div>
-      </div>
-
-      <div class="highlight-item">
-        <div class="highlight-item__img-wrap">
-          <svg viewBox="0 0 120 120" aria-hidden="true">
-            <rect width="120" height="120" fill="#12171f"/>
-            <g transform="translate(60 60)" fill="none" stroke="#e10600" stroke-width="2">
-              <circle cx="0" cy="0" r="30"/>
-              <path d="M -30 0 L 30 0 M 0 -30 L 0 30" opacity="0.5"/>
-              <circle cx="0" cy="0" r="6" fill="#e10600"/>
-            </g>
-          </svg>
-          <div class="highlight-item__badge">🎯</div>
-        </div>
-        <div class="highlight-item__body">
-          <span class="highlight-item__tag">Propósito</span>
-          <h3>Tech que democratiza</h3>
-          <p>Entrei em código porque tecnologia democratiza acesso — ensino, saúde, oportunidade. BuildXP, Banca da Ciência USP, Clínicas Populares: tudo mira nisso. É o combustível que faz o resto andar.</p>
-        </div>
-      </div>
-
-      <div class="highlight-item">
-        <div class="highlight-item__img-wrap">
-          <svg viewBox="0 0 120 120" aria-hidden="true">
-            <rect width="120" height="120" fill="#1a1018"/>
-            <g transform="translate(60 60)" fill="none" stroke="#f5c518" stroke-width="2">
-              <circle cx="-12" cy="-8" r="18"/>
-              <circle cx="14" cy="10" r="18" stroke="#e10600"/>
-              <circle cx="0" cy="0" r="4" fill="#f2f2f2" stroke="none"/>
-            </g>
-          </svg>
-          <div class="highlight-item__badge">🦸</div>
-        </div>
-        <div class="highlight-item__body">
-          <span class="highlight-item__tag">Marvel</span>
-          <h3>Multiverso</h3>
-          <p>Se existe uma coisa que a Marvel me ensinou, é que sempre existe outra possibilidade. Gosto demais de acompanhar meus heróis favoritos, e todos concordam que o Homem de Ferro é o melhor!</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- CONTATO -->
   <footer id="contact">
